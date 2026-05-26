@@ -19,38 +19,26 @@ type heapArray[T any] struct {
 }
 
 // Len length of the queue
-func (h heapArray[T]) Len() int { return len(h.array) }
+func (h heapArray[T]) Len() int {
+	_ = "STUB: not implemented"
 
-// Less compares priority of two elements in the queue
-func (h heapArray[T]) Less(i, j int) bool {
-	return h.compare(h.array[i].value, h.array[j].value)
+	// Less compares priority of two elements in the queue
+	return 0
 }
+
+func (h heapArray[T]) Less(i, j int) bool { _ = "STUB: not implemented"; return false }
 
 // Swap swaps two elements in the queue
-func (h heapArray[T]) Swap(i, j int) {
-	h.array[i], h.array[j] = h.array[j], h.array[i]
-	h.array[i].index = i
-	h.array[j].index = j
-}
+func (h heapArray[T]) Swap(i, j int) { _ = "STUB: not implemented"; return }
 
 // Push pushes to the queue
-func (h *heapArray[T]) Push(x any) {
-	n := len(h.array)
-	item := x.(*pqElement[T])
-	item.index = n
-	h.array = append(h.array, item)
-}
+func (h *heapArray[T]) Push(x any) { _ = "STUB: not implemented"; return }
 
 // Pop pops from the queue
-func (h *heapArray[T]) Pop() any {
-	old := h.array
-	n := len(old)
-	item := old[n-1]
-	old[n-1] = nil  // avoid memory leak
-	item.index = -1 // for safety
-	h.array = old[0 : n-1]
-	return item
-}
+func (h *heapArray[T]) Pop() any { _ = "STUB: not implemented"; return *new(any) }
+
+// avoid memory leak
+// for safety
 
 // update modifies the priority and value of an Item in the queue.
 // func (h *heapArray) update(element *pqElement, value string, priority int) {

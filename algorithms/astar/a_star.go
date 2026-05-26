@@ -3,7 +3,6 @@ package astar
 import (
 	"math"
 
-	"github.com/shomali11/go-interview/datastructures/linkedlists/singlylinkedlists"
 	"github.com/shomali11/go-interview/datastructures/priorityqueues"
 	"github.com/shomali11/go-interview/datastructures/sets/hashsets"
 )
@@ -27,29 +26,13 @@ type wrapper struct {
 }
 
 // New new factory
-func New() *AStar {
-	compare := func(one, two *wrapper) bool {
-		f1 := one.g + one.h
-		f2 := two.g + two.h
+func New() *AStar { _ = "STUB: not implemented"; return nil }
 
-		// Tie Breaker ... Maximum G Value
-		if f1 == f2 {
-			g1 := one.g
-			g2 := two.g
+// Tie Breaker ... Maximum G Value
 
-			// Maximum G Value
-			return g1 > g2
-		}
+// Maximum G Value
 
-		// Minimum F Value
-		return f1 < f2
-	}
-	return &AStar{
-		openPQ:         priorityqueues.New[*wrapper](compare),
-		closedSet:      hashsets.New[*wrapper](),
-		nodeWrapperMap: make(map[Node]*wrapper),
-	}
-}
+// Minimum F Value
 
 // AStar a star
 type AStar struct {
@@ -60,99 +43,44 @@ type AStar struct {
 
 // Search search
 func (s *AStar) Search(start Node, goal Node) ([]Node, float64) {
-	defer s.clear()
-
-	startWrapper := s.getWrapper(start)
-	startWrapper.h = start.EstimateDistanceToGoal(goal)
-
-	goalWrapper := s.getWrapper(goal)
-
-	s.openPQ.Push(startWrapper)
-
-	// While not Empty ...
-	for !s.openPQ.IsEmpty() {
-		// Extract Top of the Heap ...
-		currentElement, _ := s.openPQ.Pop()
-
-		// Did we reach Goal ?
-		if currentElement == goalWrapper {
-			// Shortest Path ...
-			return getPath(goalWrapper), goalWrapper.g
-		}
-
-		// Set Node to Visited ...
-		s.closedSet.Add(currentElement)
-
-		// Get List of neighbors ..
-		neighbors := currentElement.node.GetNeighbors()
-
-		// Traverse the neighbors ...
-		for _, neighborNode := range neighbors {
-			neighborWrapper := s.getWrapper(neighborNode)
-
-			// We only care about the ones we did not visit ...
-			if !s.closedSet.Contains(neighborWrapper) {
-				// Is not in the Heap ..
-				if !s.openPQ.Contains(neighborWrapper) {
-					neighborWrapper.g = positiveInfinity
-					neighborWrapper.parent = nil
-				}
-
-				s.updateVertex(currentElement, neighborWrapper, goalWrapper)
-			}
-		}
-	}
-	return make([]Node, 0), 0
+	_ = "STUB: not implemented"
+	return nil, 0
 }
+
+// While not Empty ...
+
+// Extract Top of the Heap ...
+
+// Did we reach Goal ?
+
+// Shortest Path ...
+
+// Set Node to Visited ...
+
+// Get List of neighbors ..
+
+// Traverse the neighbors ...
+
+// We only care about the ones we did not visit ...
+
+// Is not in the Heap ..
 
 func (s *AStar) updateVertex(currentWrapper *wrapper, neighborWrapper *wrapper, goalWrapper *wrapper) {
+	_ = "STUB: not implemented"
 	// Check for Consistency ..
-	totalCostToNeighbor := currentWrapper.g + currentWrapper.node.ActualDistanceToNeighbor(neighborWrapper.node)
-	if totalCostToNeighbor < neighborWrapper.g {
-		// Update the G Function
-		neighborWrapper.g = totalCostToNeighbor
-		neighborWrapper.parent = currentWrapper
-
-		// If Min Heap Has the Node ..
-		if s.openPQ.Contains(neighborWrapper) {
-			// Remove it ..
-			s.openPQ.Remove(neighborWrapper)
-		}
-
-		// Add the state with the new function value ..
-		neighborWrapper.h = neighborWrapper.node.EstimateDistanceToGoal(goalWrapper.node)
-		s.openPQ.Push(neighborWrapper)
-	}
+	return
 }
 
-func (s *AStar) clear() {
-	s.nodeWrapperMap = make(map[Node]*wrapper)
-	s.closedSet.Clear()
-	s.openPQ.Clear()
-}
+// Update the G Function
 
-func (s *AStar) getWrapper(node Node) *wrapper {
-	w, ok := s.nodeWrapperMap[node]
-	if ok {
-		return w
-	}
+// If Min Heap Has the Node ..
 
-	w = &wrapper{node: node}
-	s.nodeWrapperMap[node] = w
-	return w
-}
+// Remove it ..
 
-func getPath(goalWrapper *wrapper) []Node {
-	path := singlylinkedlists.New[Node]()
-	currentWrapper := goalWrapper
-	for currentWrapper != nil {
-		path.InsertAt(0, currentWrapper.node)
-		currentWrapper = currentWrapper.parent
-	}
+// Add the state with the new function value ..
 
-	nodeList := make([]Node, 0)
-	for _, value := range path.GetValues() {
-		nodeList = append(nodeList, value.(Node))
-	}
-	return nodeList
-}
+func (s *AStar) clear() { _ = "STUB: not implemented"; return }
+
+func (s *AStar) getWrapper(node Node) *wrapper { _ = "STUB: not implemented"; return nil }
+
+func getPath(goalWrapper *wrapper) []Node { _ = "STUB: not implemented"; return nil }

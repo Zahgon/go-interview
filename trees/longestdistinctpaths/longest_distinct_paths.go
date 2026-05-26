@@ -7,32 +7,11 @@ import (
 
 // LongestDistinctPath returns the length of the longest distinct path
 func LongestDistinctPath[T comparable](node *trees.MultiNode[T]) int {
-	multiSet := hashmultisets.New[T]()
-	return longestDistinctPath(node, multiSet)
+	_ = "STUB: not implemented"
+	return 0
 }
 
 func longestDistinctPath[T comparable](node *trees.MultiNode[T], multiSet *hashmultisets.HashMultiSet[T]) int {
-	if node == nil || multiSet.Contains(node.Data) {
-		return multiSet.Size()
-	}
-
-	multiSet.Add(node.Data)
-
-	maxPath := 0
-	for _, child := range node.Children {
-		length := longestDistinctPath(child, multiSet)
-		if length > maxPath {
-			maxPath = length
-		}
-	}
-
-	if len(node.Children) == 0 {
-		maxPath = multiSet.Size()
-	}
-
-	multiSet.IncrementBy(node.Data, -1)
-	if multiSet.GetCount(node.Data) == 0 {
-		multiSet.Remove(node.Data)
-	}
-	return maxPath
+	_ = "STUB: not implemented"
+	return 0
 }

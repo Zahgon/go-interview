@@ -9,11 +9,7 @@ var (
 )
 
 // New factory to generate new Queues
-func New[T any](values ...T) *Queue[T] {
-	Queue := Queue[T]{make([]T, 0, len(values))}
-	Queue.Enqueue(values...)
-	return &Queue
-}
+func New[T any](values ...T) *Queue[T] { _ = "STUB: not implemented"; return nil }
 
 // Queue Queue structure
 type Queue[T any] struct {
@@ -21,49 +17,26 @@ type Queue[T any] struct {
 }
 
 // Enqueue add to the Queue
-func (q *Queue[T]) Enqueue(values ...T) {
-	q.array = append(q.array, values...)
-}
+func (q *Queue[T]) Enqueue(values ...T) { _ = "STUB: not implemented"; return }
 
 // IsEmpty checks if the Queue is empty
-func (q *Queue[T]) IsEmpty() bool {
-	return q.Size() == 0
-}
+func (q *Queue[T]) IsEmpty() bool { _ = "STUB: not implemented"; return false }
 
 // Size returns size of the Queue
-func (q *Queue[T]) Size() int {
-	return len(q.array)
-}
+func (q *Queue[T]) Size() int { _ = "STUB: not implemented"; return 0 }
 
 // Clear clears Queue
 func (q *Queue[T]) Clear() {
-	q.array = nil
+	_ = "STUB: not implemented"
+
+	// Dequeue remove from the Queue
+	return
 }
 
-// Dequeue remove from the Queue
-func (q *Queue[T]) Dequeue() (res T, err error) {
-	if q.IsEmpty() {
-		return res, errEmptyQueue
-	}
-
-	res = q.array[0]
-	q.array = q.array[1:]
-	return res, nil
-}
+func (q *Queue[T]) Dequeue() (res T, err error) { _ = "STUB: not implemented"; return *new(T), nil }
 
 // Peek returns front of the Queue
-func (q *Queue[T]) Peek() (res T, err error) {
-	if q.IsEmpty() {
-		return res, errEmptyQueue
-	}
-
-	res = q.array[0]
-	return res, nil
-}
+func (q *Queue[T]) Peek() (res T, err error) { _ = "STUB: not implemented"; return *new(T), nil }
 
 // GetValues returns values
-func (q *Queue[T]) GetValues() []T {
-	values := make([]T, 0, q.Size())
-	values = append(values, q.array...)
-	return values
-}
+func (q *Queue[T]) GetValues() []T { _ = "STUB: not implemented"; return nil }

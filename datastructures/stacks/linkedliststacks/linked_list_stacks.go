@@ -11,9 +11,7 @@ var (
 )
 
 // New factory to generate new stacks
-func New[T any](values ...T) *Stack[T] {
-	return &Stack[T]{list: singlylinkedlists.New[T](values...)}
-}
+func New[T any](values ...T) *Stack[T] { _ = "STUB: not implemented"; return nil }
 
 // Stack stack structure
 type Stack[T any] struct {
@@ -21,42 +19,26 @@ type Stack[T any] struct {
 }
 
 // Push add to the stack
-func (s *Stack[T]) Push(values ...T) {
-	s.list.Add(values...)
-}
+func (s *Stack[T]) Push(values ...T) { _ = "STUB: not implemented"; return }
 
 // IsEmpty checks if the stack is empty
-func (s *Stack[T]) IsEmpty() bool {
-	return s.Size() == 0
-}
+func (s *Stack[T]) IsEmpty() bool { _ = "STUB: not implemented"; return false }
 
 // Size returns size of the stack
-func (s *Stack[T]) Size() int {
-	return s.list.Size()
-}
+func (s *Stack[T]) Size() int { _ = "STUB: not implemented"; return 0 }
 
 // Clear clears stack
 func (s *Stack[T]) Clear() {
-	s.list.Clear()
+	_ = "STUB: not implemented"
+
+	// Pop remove from the stack
+	return
 }
 
-// Pop remove from the stack
-func (s *Stack[T]) Pop() (res T, err error) {
-	if s.IsEmpty() {
-		return res, errEmptyStack
-	}
-	return s.list.RemoveAt(s.Size() - 1)
-}
+func (s *Stack[T]) Pop() (res T, err error) { _ = "STUB: not implemented"; return *new(T), nil }
 
 // Peek returns top of the stack
-func (s *Stack[T]) Peek() (res T, err error) {
-	if s.IsEmpty() {
-		return res, errEmptyStack
-	}
-	return s.list.GetLastValue()
-}
+func (s *Stack[T]) Peek() (res T, err error) { _ = "STUB: not implemented"; return *new(T), nil }
 
 // GetValues returns values
-func (s *Stack[T]) GetValues() []T {
-	return s.list.GetValues()
-}
+func (s *Stack[T]) GetValues() []T { _ = "STUB: not implemented"; return nil }

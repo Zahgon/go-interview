@@ -1,7 +1,6 @@
 package priorityqueues
 
 import (
-	"container/heap"
 	"errors"
 
 	"github.com/shomali11/go-interview/datastructures/maps/hashmultimaps"
@@ -13,13 +12,8 @@ var (
 
 // New factory to generate new priority queues
 func New[T comparable](compare func(i, j T) bool, values ...T) *PriorityQueue[T] {
-	priorityQueue := PriorityQueue[T]{
-		pq:       &heapArray[T]{compare: compare},
-		multiMap: hashmultimaps.New[T, *pqElement[T]](),
-	}
-	heap.Init(priorityQueue.pq)
-	priorityQueue.Push(values...)
-	return &priorityQueue
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // PriorityQueue Priority Queue structure
@@ -29,64 +23,32 @@ type PriorityQueue[T comparable] struct {
 }
 
 // Push pushes to the Priority Queue
-func (s *PriorityQueue[T]) Push(values ...T) {
-	for _, value := range values {
-		element := &pqElement[T]{value: value}
-		heap.Push(s.pq, element)
-		s.multiMap.Put(value, element)
-	}
-}
+func (s *PriorityQueue[T]) Push(values ...T) { _ = "STUB: not implemented"; return }
 
 // Contains checks if the value exists in the Priority Queue
-func (s *PriorityQueue[T]) Contains(value T) bool {
-	return s.multiMap.Contains(value)
-}
+func (s *PriorityQueue[T]) Contains(value T) bool { _ = "STUB: not implemented"; return false }
 
 // Remove removes from the Priority Queue
-func (s *PriorityQueue[T]) Remove(values ...T) {
-	for _, value := range values {
-		elements := s.multiMap.GetValues(value)
-		if len(elements) == 0 {
-			continue
-		}
-
-		element := elements[0]
-		heap.Remove(s.pq, element.index)
-		s.multiMap.Remove(value, element)
-	}
-}
+func (s *PriorityQueue[T]) Remove(values ...T) { _ = "STUB: not implemented"; return }
 
 // IsEmpty checks if the Priority Queue is empty
-func (s *PriorityQueue[T]) IsEmpty() bool {
-	return s.Size() == 0
-}
+func (s *PriorityQueue[T]) IsEmpty() bool { _ = "STUB: not implemented"; return false }
 
 // Size returns size of the Priority Queue
-func (s *PriorityQueue[T]) Size() int {
-	return len(s.pq.array)
-}
+func (s *PriorityQueue[T]) Size() int { _ = "STUB: not implemented"; return 0 }
 
 // Clear clears the Priority Queue
 func (s *PriorityQueue[T]) Clear() {
-	s.pq.array = nil
+	_ = "STUB: not implemented"
+
+	// Pop removes from the Priority Queue
+	return
 }
 
-// Pop removes from the Priority Queue
-func (s *PriorityQueue[T]) Pop() (res T, err error) {
-	if s.IsEmpty() {
-		return res, errEmptyQueue
-	}
-
-	element := heap.Pop(s.pq).(*pqElement[T])
-	return element.value, nil
-}
+func (s *PriorityQueue[T]) Pop() (res T, err error) { _ = "STUB: not implemented"; return *new(T), nil }
 
 // Peek returns top of the Priority Queue
 func (s *PriorityQueue[T]) Peek() (res T, err error) {
-	if s.IsEmpty() {
-		return res, errEmptyQueue
-	}
-
-	element := s.pq.array[0]
-	return element.value, nil
+	_ = "STUB: not implemented"
+	return *new(T), nil
 }

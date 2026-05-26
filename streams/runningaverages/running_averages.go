@@ -7,22 +7,17 @@ type RunningAverage struct {
 }
 
 // Add adds a number to the running average calculations
-func (ra *RunningAverage) Add(number int) {
-	ra.sum += number
-	ra.count++
-}
+func (ra *RunningAverage) Add(number int) { _ = "STUB: not implemented"; return }
 
 // GetAverage calculates the running average
-func (ra *RunningAverage) GetAverage() float64 {
-	return float64(ra.sum) / float64(ra.count)
-}
+func (ra *RunningAverage) GetAverage() float64 { _ = "STUB: not implemented"; return 0 }
 
 // GetSum returns the running sum
 func (ra *RunningAverage) GetSum() int {
-	return ra.sum
+	_ = "STUB: not implemented"
+
+	// GetCount returns the running count
+	return 0
 }
 
-// GetCount returns the running count
-func (ra *RunningAverage) GetCount() int {
-	return ra.count
-}
+func (ra *RunningAverage) GetCount() int { _ = "STUB: not implemented"; return 0 }

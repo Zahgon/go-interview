@@ -9,11 +9,7 @@ var (
 )
 
 // New factory to generate new stacks
-func New[T any](values ...T) *Stack[T] {
-	stack := Stack[T]{make([]T, 0, len(values))}
-	stack.Push(values...)
-	return &stack
-}
+func New[T any](values ...T) *Stack[T] { _ = "STUB: not implemented"; return nil }
 
 // Stack stack structure
 type Stack[T any] struct {
@@ -21,50 +17,26 @@ type Stack[T any] struct {
 }
 
 // Push add to the stack
-func (s *Stack[T]) Push(values ...T) {
-	s.array = append(s.array, values...)
-}
+func (s *Stack[T]) Push(values ...T) { _ = "STUB: not implemented"; return }
 
 // IsEmpty checks if the stack is empty
-func (s *Stack[T]) IsEmpty() bool {
-	return s.Size() == 0
-}
+func (s *Stack[T]) IsEmpty() bool { _ = "STUB: not implemented"; return false }
 
 // Size returns size of the stack
-func (s *Stack[T]) Size() int {
-	return len(s.array)
-}
+func (s *Stack[T]) Size() int { _ = "STUB: not implemented"; return 0 }
 
 // Clear clears stack
 func (s *Stack[T]) Clear() {
-	s.array = nil
+	_ = "STUB: not implemented"
+
+	// Pop remove from the stack
+	return
 }
 
-// Pop remove from the stack
-func (s *Stack[T]) Pop() (res T, err error) {
-	if s.IsEmpty() {
-		return res, errEmptyStack
-	}
-
-	size := s.Size()
-	value := s.array[size-1]
-	s.array = s.array[:size-1]
-	return value, nil
-}
+func (s *Stack[T]) Pop() (res T, err error) { _ = "STUB: not implemented"; return *new(T), nil }
 
 // Peek returns top of the stack
-func (s *Stack[T]) Peek() (res T, err error) {
-	if s.IsEmpty() {
-		return res, errEmptyStack
-	}
-
-	value := s.array[s.Size()-1]
-	return value, nil
-}
+func (s *Stack[T]) Peek() (res T, err error) { _ = "STUB: not implemented"; return *new(T), nil }
 
 // GetValues returns values
-func (s *Stack[T]) GetValues() []T {
-	values := make([]T, 0, s.Size())
-	values = append(values, s.array...)
-	return values
-}
+func (s *Stack[T]) GetValues() []T { _ = "STUB: not implemented"; return nil }
